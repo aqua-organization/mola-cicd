@@ -1,0 +1,32 @@
+.header {
+  height: var(--header-height);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-logo-icon {
+  height: 44px;
+  width: 44px;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-white);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.header-logo-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-black);
+}

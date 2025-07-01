@@ -1,0 +1,14 @@
+.main-layout {
+}
+
+.main-layout-container {
+  display: flex;
+}
+
+.main-layout-content {
+  /* background-color: var(--quinary-color); */
+  flex: 1;
+  height: calc(100vh - var(--header-height));
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  width: calc(100vw - 255px);
+}
