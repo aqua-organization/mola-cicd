@@ -31,8 +31,6 @@ const useInfiniteScroll = ({
           limit: pageSize,
         });
 
-        console.log("result", result);
-
         const data = result.data[dataKey];
 
         if (result && result.data) {
@@ -54,6 +52,7 @@ const useInfiniteScroll = ({
           setHasNextPage(false);
         }
       } catch (err) {
+        setHasNextPage(false);
         setError(err.message || "Có lỗi xảy ra khi tải dữ liệu");
         console.error("Infinite scroll error:", err);
       } finally {
@@ -79,7 +78,6 @@ const useInfiniteScroll = ({
     setRefreshKey((prev) => prev + 1);
   }, []);
 
-  // Initial load and refresh
   useEffect(() => {
     fetchPage(1, true);
   }, [refreshKey, fetchPage]);

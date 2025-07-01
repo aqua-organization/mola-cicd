@@ -8,14 +8,17 @@ const Button = ({
   size = "medium",
   variant = "contained",
   buttonType = "button",
+  loading = false,
+  ...props
 }) => {
   return (
     <button
       className={`${buttonType} button-${variant} button-${size}`}
       onClick={onClick}
       type={type}
+      {...props}
     >
-      {children}
+      {loading ? "Loading..." : children}
     </button>
   );
 };
@@ -27,6 +30,7 @@ Button.propTypes = {
   variant: PropTypes.oneOf(["contained", "outlined"]),
   size: PropTypes.oneOf(["small", "medium", "large"]),
   buttonType: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default Button;

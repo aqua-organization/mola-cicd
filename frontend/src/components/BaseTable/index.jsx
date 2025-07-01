@@ -21,8 +21,8 @@ import useScrollObserver from "./hooks/useScrollObserver";
 import { purchaseInvoiceFieldConfigs } from "./baseTableConfig";
 
 const BaseTable = ({
+  data: listData,
   columns,
-  typeTable,
   fetchData,
   onRowClick,
   enableSelection,
@@ -35,8 +35,8 @@ const BaseTable = ({
   const { data, initialLoading, hasNextPage, loadMore, loading, refresh } =
     useInfiniteScroll({
       fetchData,
-      pageSize: 12,
-      initialData: [],
+      pageSize: 10,
+      initialData: listData,
       dataKey: "invoices",
     });
   const {
@@ -49,7 +49,6 @@ const BaseTable = ({
   const { selectedItems, selectAll, handleSelectItem, handleSelectAll } =
     useSelected({
       data,
-      idKey: typeTable === 1 ? "_id" : "invoiceDetailId",
     });
 
   const bottomRef = useScrollObserver({
@@ -206,7 +205,7 @@ const BaseTable = ({
                 ) : (
                   <tr ref={bottomRef} style={{ height: "1px" }}>
                     {hasNextPage && (
-                      <td colSpan={columns.length}>
+                      <td colSpan={columns.length + 3}>
                         <div className="base-table-loading">
                           Đang tải thêm dữ liệu...
                         </div>
@@ -226,8 +225,8 @@ const BaseTable = ({
 };
 
 BaseTable.propTypes = {
+  data: PropTypes.array.isRequired,
   columns: PropTypes.array.isRequired,
-  typeTable: PropTypes.number.isRequired,
   fetchData: PropTypes.func.isRequired,
   enableSelection: PropTypes.bool,
   enableAction: PropTypes.bool,

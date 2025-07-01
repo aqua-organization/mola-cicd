@@ -29,7 +29,6 @@ const BaseTableControl = ({
           fieldConfigs={allowFieldsUpdate}
         />
         <Button
-          className="btn btn-add-new-invoice btn-primary"
           onClick={handleShowSettingDefaultValueModal}
           disabled={selectedItems.size <= 0}
         >
