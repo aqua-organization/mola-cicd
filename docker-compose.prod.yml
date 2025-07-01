@@ -20,9 +20,9 @@ services:
     environment:
       - NODE_ENV=production
       - MONGODB_URI=${MONGODB_URI}
-    depends_on:
-      mongo:
-        condition: service_healthy
+    # depends_on:
+    #   mongo:
+    #     condition: service_healthy
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]

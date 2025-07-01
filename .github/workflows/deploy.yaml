@@ -8,6 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  MONGODB_URI: ${{ secrets.MONGODB_URI }}
 
 jobs:
   mola-frontend:
