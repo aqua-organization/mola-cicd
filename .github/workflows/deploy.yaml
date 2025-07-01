@@ -107,7 +107,7 @@ jobs:
       - name: Run integration tests
         run: |
           # Start services for integration testing
-          docker-compose -f docker-compose.test.yml up -d
+          docker compose -f docker-compose.test.yml up -d
           sleep 30  # Wait for services to be ready
 
           # Run integration tests here
@@ -115,7 +115,7 @@ jobs:
           # Example: curl http://localhost:8000/health
 
           # Cleanup
-          docker-compose -f docker-compose.test.yml down
+          docker compose -f docker-compose.test.yml down
 
   deploy:
     name: Deploy to Production
@@ -134,7 +134,7 @@ jobs:
           # Add your deployment commands here
           # Examples:
           # - kubectl apply -f k8s/
-          # - docker-compose -f docker-compose.prod.yml up -d
+          docker compose -f docker-compose.prod.yml up -d
           # - aws ecs update-service --cluster my-cluster --service my-service --force-new-deployment
 
       - name: Notify deployment
