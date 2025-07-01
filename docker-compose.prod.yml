@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/frontend:${{ github.sha }}
+    image: ghcr.io/mola-cicd/mola-frontend:latest
     ports:
       - "80:80"
     environment:
@@ -14,7 +14,7 @@ services:
       start_period: 40s
 
   backend:
-    image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/backend:${{ github.sha }}
+    image: ghcr.io/mola-cicd/mola-backend:latest
     ports:
       - "8000:8000"
     environment:
