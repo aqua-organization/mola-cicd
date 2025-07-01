@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   frontend:
-    image: ghcr.io/mola-cicd/mola-frontend:latest
+    image: ghcr.io/aqua-organization/mola-cicd/mola-frontend:latest
     ports:
       - "3000:80"
     environment:
@@ -15,7 +15,7 @@ services:
       start_period: 40s
 
   backend:
-    image: ghcr.io/mola-ci/mola-backend:latest
+    image: ghcr.io/aqua-organization/mola-cicd/mola-backend:latest
     ports:
       - "8000:8000"
     environment:
