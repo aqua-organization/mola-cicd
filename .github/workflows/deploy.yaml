@@ -81,6 +81,9 @@ jobs:
   mola-integration-tests:
     name: Integration Tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     needs: [mola-frontend, mola-backend]
     if: github.event_name != 'pull_request'
 
@@ -119,6 +122,9 @@ jobs:
   mola-deploy:
     name: Deploy to Production
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     needs: [mola-frontend, mola-backend, mola-integration-tests]
     if: github.ref == 'refs/heads/production' && github.event_name != 'pull_request'
     environment: production
