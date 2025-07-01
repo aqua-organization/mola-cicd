@@ -1,0 +1,458 @@
+/* Base table styles */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+.custom-table {
+  width: 100%;
+  min-width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  font-size: 14px;
+  table-layout: auto;
+}
+
+/* Table variants */
+.table-responsive {
+  min-width: 800px; /* Increased minimum width for better responsive behavior */
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* .table-bordered {
+  border: 1px solid #e5e7eb;
+} */
+
+.table-hover tbody tr:hover {
+  background-color: #f3f4f6;
+}
+
+/* Table sizes */
+.table-sm .table-head,
+.table-sm .table-cell {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.table-default .table-head,
+.table-default .table-cell {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.table-lg .table-head,
+.table-lg .table-cell {
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+/* Header styles */
+.table-header {
+  background-color: #f9fafb;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.table-header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Table head styles */
+.table-head {
+  font-weight: 600;
+  color: #374151;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-bottom: 1px solid #e5e7eb;
+  user-select: none;
+  min-width: 120px; /* Minimum width to prevent over-compression */
+  position: relative;
+}
+
+.table-head-sortable {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.table-head-sortable:hover {
+  background-color: #f3f4f6;
+}
+
+.table-head-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.sort-icon {
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+.table-head-sortable:hover .sort-icon {
+  color: #6b7280;
+}
+
+/* Table body styles */
+.table-body {
+  background-color: white;
+}
+
+/* Table row styles */
+.table-row {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s ease;
+}
+
+.table-row-selected {
+  background-color: #eff6ff;
+}
+
+.table-row-clickable {
+  cursor: pointer;
+}
+
+.table-row-clickable:hover {
+  background-color: #f9fafb;
+}
+
+/* Table cell styles */
+.table-cell {
+  padding: 12px 16px;
+  vertical-align: middle;
+  color: #111827;
+  border-bottom: 1px solid #f3f4f6;
+  white-space: nowrap;
+  min-width: 60px; /* Minimum width to prevent over-compression */
+}
+
+.table-cell-truncate {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 120px;
+}
+
+/* Specific width classes for better control */
+.table-cell-sm {
+  min-width: 80px;
+  max-width: 120px;
+}
+
+.table-cell-md {
+  min-width: 120px;
+  max-width: 200px;
+}
+
+.table-cell-lg {
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.table-cell-xl {
+  min-width: 300px;
+  max-width: 400px;
+}
+
+/* Allow wrapping for specific cells */
+.table-cell-wrap {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Text alignment */
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Checkbox styles */
+.table-checkbox-cell {
+  width: 40px;
+  padding: 8px;
+}
+
+.table-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-color, #3b82f6);
+  cursor: pointer;
+}
+
+/* Action menu styles */
+.table-actions-cell {
+  width: 50px;
+  position: relative;
+}
+
+.table-actions {
+  position: relative;
+  display: inline-block;
+}
+
+.table-actions-trigger {
+  padding: 4px;
+  border: none;
+  background: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.table-actions-trigger:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.table-actions-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.table-actions-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  min-width: 120px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  padding: 4px 0;
+}
+
+/* Advanced table container */
+.advanced-table-container {
+  width: 100%;
+}
+
+/* Search styles */
+.table-search {
+  margin-bottom: 16px;
+}
+
+.table-search-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.table-search-input:focus {
+  outline: none;
+  border-color: var(--primary-color, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Loading styles */
+.table-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.table-spinner {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* Empty state */
+.table-empty {
+  padding: 40px 20px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Pagination styles */
+.table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-top: 16px;
+  padding: 16px 0; */
+  border-top: 1px solid #f3f4f6;
+}
+
+.table-pagination-info {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.table-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.table-pagination-button {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #374151;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  min-width: 40px;
+}
+
+.table-pagination-button:hover:not(:disabled) {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.table-pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.table-pagination-button.active {
+  background-color: var(--primary-color, #3b82f6);
+  border-color: var(--primary-color, #3b82f6);
+  color: white;
+}
+
+.table-pagination-ellipsis {
+  padding: 6px 4px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .table-wrapper {
+    /* margin: 0 -16px; */
+    /* Ensure horizontal scroll is always visible on mobile */
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .custom-table {
+    font-size: 12px;
+    min-width: 600px; /* Force minimum width to ensure horizontal scroll */
+  }
+
+  .table-responsive {
+    min-width: 700px; /* Ensure responsive tables are wide enough */
+  }
+
+  .table-head,
+  .table-cell {
+    padding: 8px 12px;
+    min-width: 100px; /* Reduced minimum width for mobile */
+  }
+
+  .table-cell-sm {
+    min-width: 70px;
+    max-width: 100px;
+  }
+
+  .table-cell-md {
+    min-width: 100px;
+    max-width: 150px;
+  }
+
+  .table-pagination {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .table-pagination-controls {
+    justify-content: center;
+  }
+
+  .table-search-input {
+    max-width: 100%;
+  }
+
+  /* Show scroll hint on mobile */
+  .table-wrapper::after {
+    content: "← Scroll horizontally to view more →";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #9ca3af;
+    white-space: nowrap;
+    opacity: 0.7;
+  }
+
+  .advanced-table-container {
+    position: relative;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-table {
+    font-size: 11px;
+  }
+
+  .table-head,
+  .table-cell {
+    padding: 6px 8px;
+  }
+
+  .table-pagination-button {
+    padding: 4px 8px;
+    font-size: 12px;
+    min-width: 32px;
+  }
+}
