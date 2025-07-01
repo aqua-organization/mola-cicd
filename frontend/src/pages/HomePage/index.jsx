@@ -1,9 +1,13 @@
-import BaseTable from "../../components/BaseTable";
+import ShowInvoiceDetailModal from "../../modals/ShowInvoiceDetailModal";
 
 const HomePage = () => {
   return (
     <div>
-      <BaseTable />
+      <ShowInvoiceDetailModal
+        isOpen={true}
+        onClose={() => {}}
+        crawlInfo={null}
+      />
     </div>
   );
 };
