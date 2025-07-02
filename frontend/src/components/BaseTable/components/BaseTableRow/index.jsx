@@ -54,6 +54,14 @@ const renderCellContent = ({ row, column }) => {
   const value = row[column.key];
   if (!value && value !== 0) return "";
 
+  if (column.key === "isPurchasingCost") {
+    return value ? "TRUE" : "FALSE";
+  }
+
+  if (column.key === "invoiceReceived") {
+    return value ? "Đã nhận" : "Chưa nhận";
+  }
+
   if (column.type === "currency") {
     return formatCurrency(value);
   } else if (column.type === "date") {

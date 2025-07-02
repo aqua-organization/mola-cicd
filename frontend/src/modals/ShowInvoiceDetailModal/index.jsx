@@ -12,6 +12,9 @@ import {
 } from "./invoiceDetailConfig";
 import Button from "../../components/ui/Button";
 
+// Configs
+import { INVOICE_TYPE } from "../../configs/invoiceConfig";
+
 const customStyles = {
   content: {
     top: "50%",
@@ -49,9 +52,6 @@ const ShowInvoiceDetailModal = ({
     isLoading,
     error,
     hasUnsavedChanges,
-    handleAddItem,
-    handleUpdateItem,
-    handleDeleteItem,
     handleExportExcel,
     handleSaveChanges,
     resetError,
@@ -112,7 +112,7 @@ const ShowInvoiceDetailModal = ({
                     ? `Dữ liệu từ ${crawlInfo.startDate} đến ${
                         crawlInfo.endDate
                       } - ${
-                        crawlInfo.type === 1
+                        crawlInfo.type === INVOICE_TYPE.SALES
                           ? "Hóa đơn bán ra"
                           : "Hóa đơn mua vào"
                       }`
@@ -180,16 +180,14 @@ const ShowInvoiceDetailModal = ({
 
             {/* Data Table */}
             <BaseTable
+              fetchData={crawlInfo?.fetchData}
               data={initialData}
-              onAdd={handleAddItem}
-              onUpdate={handleUpdateItem}
-              onDelete={handleDeleteItem}
               enableSelection={true}
-              enableAction={true}
+              enableAction={false}
               isLoading={isLoading}
               tableWrapperRef={tableWrapperRef}
               columns={
-                crawlInfo?.type === 1
+                crawlInfo?.type === INVOICE_TYPE.SALES
                   ? tableSalesInvoiceFields
                   : tablePurchaseInvoiceFields
               }

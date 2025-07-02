@@ -27,7 +27,7 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
   type: PropTypes.string,
-  variant: PropTypes.oneOf(["contained", "outlined"]),
+  variant: PropTypes.oneOf(["contained", "outlined", "danger", "success"]),
   size: PropTypes.oneOf(["small", "medium", "large"]),
   buttonType: PropTypes.string,
   loading: PropTypes.bool,

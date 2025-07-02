@@ -238,17 +238,6 @@
 }
 
 /* Bulk Actions Bar */
-.bulk-actions-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  border: 1px solid #0ea5e9;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  animation: slideDown 0.3s ease-out;
-}
 
 .bulk-actions-info {
   display: flex;
