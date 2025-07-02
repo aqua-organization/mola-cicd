@@ -16,6 +16,9 @@
   --text-4xl: 32px;
   --text-5xl: 40px;
 
+  --success-color: #16a34a;
+  --danger-color: #ef4444;
+
   --text-black: #1c1917;
   --text-white: #fff;
   --text-gray: #78716c;

@@ -9,16 +9,16 @@ import BaseTableRow from "./components/BaseTableRow";
 import BaseTableControl from "./components/BaseTableControl";
 import { Download, Trash2, X } from "lucide-react";
 
-// Icons
-
 // Hooks
 import useSearchField from "./hooks/useSearchField";
 import useSelected from "./hooks/useSelected";
 import useInfiniteScroll from "./hooks/useInfiniteScroll";
 import useScrollObserver from "./hooks/useScrollObserver";
+import useBaseTable from "./hooks/useBaseTable";
 
 // Configs
 import { purchaseInvoiceFieldConfigs } from "./baseTableConfig";
+import Button from "../ui/Button";
 
 const BaseTable = ({
   data: listData,
@@ -27,7 +27,6 @@ const BaseTable = ({
   onRowClick,
   enableSelection,
   enableAction,
-  onUpdate,
   onDelete,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,6 +64,15 @@ const BaseTable = ({
     return filterDataByField(data, searchQuery);
   }, [data, searchQuery, filterDataByField]);
 
+  const {
+    data: baseTableData,
+    handleUpdateItem,
+    handleSaveChanges,
+    hasUnsavedChanges,
+  } = useBaseTable({
+    initialData: filteredData,
+  });
+
   const handleSearch = useCallback((query) => {
     setSearchQuery(query);
   }, []);
@@ -87,12 +95,9 @@ const BaseTable = ({
   };
 
   const handleSaveSettingDefaultValue = (formData) => {
-    console.log("formData", formData);
     const selectedData = filteredData.filter((item) =>
       selectedItems.has(item._id)
     );
-
-    console.log("selectedData", selectedData);
 
     const newData = selectedData.map((item) => {
       Object.keys(formData).forEach((key) => {
@@ -102,7 +107,9 @@ const BaseTable = ({
     });
 
     if (newData.length > 0) {
-      onUpdate(newData);
+      newData.forEach((item) => {
+        handleUpdateItem(item._id, item);
+      });
     }
   };
 
@@ -114,24 +121,26 @@ const BaseTable = ({
             <span>Đã chọn {selectedItems.size} mục</span>
           </div>
           <div className="bulk-actions-controls">
-            <button
-              className="btn btn-success"
+            <Button
               onClick={handleBulkExport}
+              size="small"
               title="Xuất các mục đã chọn"
             >
               <Download size={16} />
               Xuất {selectedItems.size} mục
-            </button>
-            <button
-              className="btn btn-danger"
+            </Button>
+            <Button
+              variant="danger"
+              size="small"
               onClick={handleBulkDelete}
               title="Xóa các mục đã chọn"
             >
               <Trash2 size={16} />
               Xóa {selectedItems.size} mục
-            </button>
-            <button
-              className="btn btn-secondary"
+            </Button>
+            <Button
+              variant="outlined"
+              size="small"
               onClick={() => {
                 handleSelectAll(true);
               }}
@@ -139,7 +148,7 @@ const BaseTable = ({
             >
               <X size={16} />
               Bỏ chọn
-            </button>
+            </Button>
           </div>
         </div>
       )}
@@ -176,7 +185,7 @@ const BaseTable = ({
                 enableAction={enableAction}
               />
               <TableBody>
-                {filteredData.map((row, index) => {
+                {baseTableData.map((row, index) => {
                   return (
                     <BaseTableRow
                       key={row._id}
@@ -220,6 +229,21 @@ const BaseTable = ({
       ) : (
         <div className="base-table-empty">Không có dữ liệu</div>
       )}
+      <div className="base-table-footer">
+        {hasUnsavedChanges && (
+          <div className="base-table-unsaved-changes">
+            Có thay đổi chưa được lưu
+          </div>
+        )}
+        <div className="base-table-footer-actions">
+          <Button onClick={handleSaveChanges} size="small" variant="none">
+            Hủy
+          </Button>
+          <Button onClick={handleSaveChanges} size="small" variant="contained">
+            Lưu
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };

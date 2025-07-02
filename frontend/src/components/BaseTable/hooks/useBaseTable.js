@@ -1,14 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 import { nanoid } from "nanoid";
 
-const useBaseTable = ({ initialData = [], typeTable = 1 }) => {
+const useBaseTable = ({ initialData = [] }) => {
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
-  // Initialize data
   useEffect(() => {
     if (initialData && initialData.length > 0) {
       const dataWithIds = initialData.map((item) => ({
@@ -25,7 +24,6 @@ const useBaseTable = ({ initialData = [], typeTable = 1 }) => {
     setHasUnsavedChanges(hasChanges);
   }, [data, originalData]);
 
-  // Add new item
   const handleAddItem = useCallback((newItem) => {
     const itemWithId = {
       ...newItem,
@@ -38,7 +36,7 @@ const useBaseTable = ({ initialData = [], typeTable = 1 }) => {
   const handleUpdateItem = useCallback((itemId, updatedItem) => {
     setData((prevData) =>
       prevData.map((item) =>
-        item.invoiceDetailId === itemId
+        item._id === itemId
           ? { ...item, ...updatedItem, isModified: !item.isNew }
           : item
       )
@@ -47,39 +45,41 @@ const useBaseTable = ({ initialData = [], typeTable = 1 }) => {
 
   const handleDeleteItem = useCallback((itemId) => {
     setData((prevData) => {
-      const item = prevData.find((item) => item.invoiceDetailId === itemId);
-      console.log("item", item);
+      const item = prevData.find((item) => item._id === itemId);
       if (item && item.isNew) {
-        return prevData.filter((item) => item.invoiceDetailId !== itemId);
+        return prevData.filter((item) => item._id !== itemId);
       } else {
         return prevData.map((item) =>
-          item.invoiceDetailId === itemId ? { ...item, isDeleted: true } : item
+          item._id === itemId ? { ...item, isDeleted: true } : item
         );
       }
     });
   }, []);
 
   const handleSaveChanges = useCallback(async () => {
-    // setIsLoading(true);
-    // setError(null);
-    // console.log("data", data);
-    // try {
-    //     // Prepare data for API
-    //     const newItems = data.filter((item) => item.isNew && !item.isDeleted);
-    //     const modifiedItems = data.filter(
-    //         (item) => item.isModified && !item.isDeleted
-    //     );
-    //     const deletedItems = data.filter((item) => item.isDeleted && !item.isNew);
-    //     const promises = [];
-    //     // Create new items
-    //     if (data.length > 0) {
-    //         promises.push(bulkInsertSalesInvoices({ data }));
-    //     }
-    // } catch (error) {
-    //     setError(error);
-    // } finally {
-    //     setIsLoading(false);
-    // }
+    setIsLoading(true);
+    setError(null);
+    console.log("data", data);
+    try {
+      const newItems = data.filter((item) => item.isNew && !item.isDeleted);
+      const modifiedItems = data.filter(
+        (item) => item.isModified && !item.isDeleted
+      );
+      const deletedItems = data.filter((item) => item.isDeleted && !item.isNew);
+      if (newItems.length > 0) {
+        console.log("newItems", newItems);
+      }
+      if (modifiedItems.length > 0) {
+        console.log("modifiedItems", modifiedItems);
+      }
+      if (deletedItems.length > 0) {
+        console.log("deletedItems", deletedItems);
+      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
   }, [data]);
 
   return {

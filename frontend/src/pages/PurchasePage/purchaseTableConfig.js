@@ -103,7 +103,7 @@ export const tablePurchaseInvoiceFields = [
 
 export const mockDataPurchaseInvoice = [
   {
-    invoiceId: 1,
+    _id: 1,
     accountingDate: "2021-01-01",
     documentDate: "2021-01-01",
     receiptVoucherNumber: "INV-001",
@@ -122,10 +122,9 @@ export const mockDataPurchaseInvoice = [
     invoiceReceived: true,
     isPurchasingCost: true,
     documentType: "Invoice",
-    actions: "actions",
   },
   {
-    invoiceId: 2,
+    _id: 2,
     accountingDate: "2021-01-01",
     documentDate: "2021-01-01",
     receiptVoucherNumber: "INV-002",
@@ -143,6 +142,5 @@ export const mockDataPurchaseInvoice = [
     invoiceReceived: true,
     isPurchasingCost: true,
     documentType: "Invoice",
-    actions: "actions",
   },
 ];

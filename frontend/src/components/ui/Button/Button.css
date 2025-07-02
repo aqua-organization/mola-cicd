@@ -17,6 +17,31 @@
   cursor: pointer;
 }
 
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-success {
+  background-color: var(--success-color);
+  color: var(--text-white);
+}
+
+.button-success:hover {
+  background-color: var(--success-color);
+  color: var(--text-white);
+}
+
+.button-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: var(--text-white);
+}
+
+.button-danger:hover {
+  background-color: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: var(--text-white);
+}
+
 .button-contained {
   background: linear-gradient(135deg, var(--primary-color) 0%, #16a34a 100%);
   color: var(--text-white);
