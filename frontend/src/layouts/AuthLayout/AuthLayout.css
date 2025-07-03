@@ -1,0 +1,27 @@
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d2e6d6;
+  padding: 1rem;
+}
+
+.auth-layout-container {
+  width: 100%;
+  max-width: 446px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+}
+
+@media (max-width: 640px) {
+  .auth-layout {
+    padding: 0.5rem;
+  }
+
+  .auth-layout-container {
+    padding: 1.5rem;
+  }
+}
