@@ -150,14 +150,13 @@ const ShowInvoiceDetailModal = ({
                 Export
               </button>
 
-              <Button
-                buttonType="button-close"
-                size="small"
+              <button
+                className="modal-close-btn"
                 onClick={handleCloseAttempt}
                 aria-label="Đóng modal"
               >
                 <X size={18} />
-              </Button>
+              </button>
             </div>
           </div>
 
@@ -192,20 +191,6 @@ const ShowInvoiceDetailModal = ({
                   : tablePurchaseInvoiceFields
               }
             />
-          </div>
-          <div className="modal-footer">
-            <div className="modal-footer-left">
-              <Button variant="none" onClick={handleCancelClose}>
-                Hủy
-              </Button>
-              <Button
-                onClick={handleSaveChanges}
-                disabled={!hasUnsavedChanges}
-                loading={isLoading}
-              >
-                Lưu
-              </Button>
-            </div>
           </div>
         </div>
       </Modal>

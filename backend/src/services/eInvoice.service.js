@@ -17,15 +17,12 @@ class EInvoiceService {
     this.salesInvoiceService = new SalesInvoiceService();
   }
 
-  static async getCaptcha() {
+  async getCaptcha() {
     const response = await httpClient.get(GET_CAPTCHA_URL);
-    if (!response.success) {
-      throw new InternalServerError("Failed to get captcha");
-    }
     return response;
   }
 
-  static async Login({ username, password, captcha, ckey }) {
+  async Login({ username, password, captcha, ckey }) {
     const response = await httpClient.post(LOGIN_URL, {
       username,
       password,
