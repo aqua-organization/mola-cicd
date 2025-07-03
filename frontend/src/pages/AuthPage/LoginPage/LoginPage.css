@@ -1,0 +1,23 @@
+.login-page {
+  width: 100%;
+}
+
+.login-page-form-register-container {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.login-page-form-register-text {
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.login-page-form-register-link {
+  font-size: 14px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}

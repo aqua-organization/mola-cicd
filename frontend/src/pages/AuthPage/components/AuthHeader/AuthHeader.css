@@ -1,0 +1,35 @@
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-header-logo-wrapper {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: white;
+}
+
+.auth-header-logo-wrapper svg {
+  width: 32px;
+  height: 32px;
+}
+
+.auth-header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.auth-header-subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+  margin: 0;
+}
