@@ -4,7 +4,7 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "dev": "bun src/index.js",
+    "dev": "bun --watch src/index.js",
     "start": "bun src/index.js",
     "test": "bun test"
   },
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@eslint/js": "^9.30.0",
     "globals": "^16.2.0",
-    "lint": "^0.8.19"
+    "lint": "^0.8.19",
+    "nodemon": "^3.1.10"
   }
 }
