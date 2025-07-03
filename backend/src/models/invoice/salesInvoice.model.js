@@ -20,10 +20,6 @@ const salesInvoiceSchema = new mongoose.Schema(
     isInvoiced: { type: Boolean, default: false },
     isDelivered: { type: Boolean, default: false },
     documentType: { type: String },
-
-    details: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "SalesInvoiceDetail" },
-    ],
   },
   {
     timestamps: true,

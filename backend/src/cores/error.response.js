@@ -47,3 +47,13 @@ export class InvalidRouteError extends ErrorResponse {
     super(message, statusCode, errorCode);
   }
 }
+
+export class InternalServerError extends ErrorResponse {
+  constructor(
+    message = errorCodes.INTERNAL_ERROR.message,
+    statusCode = errorCodes.INTERNAL_ERROR.httpCode,
+    errorCode = errorCodes.INTERNAL_ERROR.code
+  ) {
+    super(message, statusCode, errorCode);
+  }
+}

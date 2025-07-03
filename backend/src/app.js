@@ -5,6 +5,7 @@ import {
   errorHandler,
   notFoundHandler,
 } from "./middlewares/handler.middleware.js";
+import "./tests/index.test.js";
 
 const app = express();
 
