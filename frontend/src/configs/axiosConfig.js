@@ -44,7 +44,7 @@ apiClient.interceptors.response.use(
     console.log(
       `${response.config.method?.toUpperCase()} ${response.config.url}`
     );
-    return response;
+    return response.data;
   },
   async (error) => {
     const originalRequest = error.config;
