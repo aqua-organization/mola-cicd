@@ -4,9 +4,9 @@ import mongoose from "mongoose";
 import { countConnect } from "../helpers/checkConnect.js";
 import { envConfig } from "../configs/env.config.js";
 
-const env = envConfig();
+const { env, database } = envConfig();
 
-const connectString = env.database.mongodb_uri;
+const connectString = database.mongodb_uri[env];
 
 class Database {
   constructor() {
