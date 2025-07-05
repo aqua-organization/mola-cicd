@@ -2,25 +2,22 @@ import mongoose from "mongoose";
 
 const salesInvoiceDetailSchema = new mongoose.Schema(
   {
-    salesInvoice: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "SalesInvoice",
-      required: true,
-    },
+    userId: { type: String },
+    invoiceKey: { type: String },
 
-    itemCode: { type: String, required: true },
-    itemName: { type: String, required: true },
+    itemCode: { type: String },
+    itemName: { type: String },
     specificationCode: { type: String },
-    unit: { type: String, required: true },
+    unit: { type: String },
     unitConversion: { type: Number, default: 1 },
     quantityConversion: { type: Number, default: 1 },
     conversionRate: { type: Number, default: 1 },
 
     accountCostOrLiability: { type: String },
     accountRevenue: { type: String },
-    quantity: { type: Number, required: true },
-    unitPrice: { type: Number, required: true },
-    amount: { type: Number, required: true },
+    quantity: { type: Number },
+    unitPrice: { type: Number },
+    amount: { type: Number },
     discountRate: { type: Number, default: 0 },
     discountAmount: { type: Number, default: 0 },
     discountAccount: { type: String },

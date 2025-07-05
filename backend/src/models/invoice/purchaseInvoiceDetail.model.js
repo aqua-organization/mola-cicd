@@ -2,22 +2,19 @@ import mongoose from "mongoose";
 
 const purchaseInvoiceDetailSchema = new mongoose.Schema(
   {
-    purchaseInvoice: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "PurchaseInvoice",
-      required: true,
-    },
+    userId: { type: String },
+    invoiceKey: { type: String },
 
-    itemCode: { type: String, required: true },
-    itemName: { type: String, required: true },
-    warehouse: { type: String, required: true },
-    unit: { type: String, required: true },
+    itemCode: { type: String },
+    itemName: { type: String },
+    warehouse: { type: String },
+    unit: { type: String },
 
-    debitAccount: { type: String, required: true },
-    creditAccount: { type: String, required: true },
-    quantity: { type: Number, required: true },
-    unitPrice: { type: Number, required: true },
-    amount: { type: Number, required: true },
+    debitAccount: { type: String },
+    creditAccount: { type: String },
+    quantity: { type: Number },
+    unitPrice: { type: Number },
+    amount: { type: Number },
     discountRate: { type: Number, default: 0 },
     discountAmount: { type: Number, default: 0 },
     purchasingCost: { type: Number, default: 0 },
