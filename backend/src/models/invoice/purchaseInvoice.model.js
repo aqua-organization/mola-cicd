@@ -2,30 +2,30 @@ import mongoose from "mongoose";
 
 const purchaseInvoiceSchema = new mongoose.Schema(
   {
-    accountingDate: { type: Date, required: true },
-    documentDate: { type: Date, required: true },
-    receiptVoucherNumber: { type: String, required: true },
-    documentNumber: { type: String, required: true, unique: true },
-    invoiceNumber: { type: String },
+    userId: { type: String },
+    invoiceKey: { type: String },
 
-    supplierCode: { type: String, required: true },
-    supplierName: { type: String, required: true },
+    accountingDate: { type: Date },
+    documentDate: { type: Date },
+    receiptVoucherNumber: { type: String },
+    documentNumber: { type: String, unique: true },
+    invoiceNumber: { type: String },
+    invoiceSymbol: { type: String },
+
+    supplierCode: { type: String },
+    supplierName: { type: String },
 
     description: { type: String },
-    totalAmount: { type: Number, required: true },
+    totalAmount: { type: Number },
     discountAmount: { type: Number, default: 0 },
     vatAmount: { type: Number, default: 0 },
-    totalPayment: { type: Number, required: true },
+    totalPayment: { type: Number },
     purchasingCost: { type: Number, default: 0 },
     warehouseValue: { type: Number, default: 0 },
 
     invoiceReceived: { type: Boolean, default: false },
     isPurchasingCost: { type: Boolean, default: false },
-    documentType: { type: String, required: true },
-
-    details: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "PurchaseInvoiceDetail" },
-    ],
+    documentType: { type: String },
   },
   {
     timestamps: true,

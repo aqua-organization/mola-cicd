@@ -2,17 +2,21 @@ import mongoose from "mongoose";
 
 const salesInvoiceSchema = new mongoose.Schema(
   {
-    accountingDate: { type: Date, required: true },
-    documentDate: { type: Date, required: true },
-    documentNumber: { type: String, required: true, unique: true },
+    userId: { type: String },
+    invoiceKey: { type: String },
+
+    accountingDate: { type: Date },
+    documentDate: { type: Date },
+    documentNumber: { type: String, unique: true },
     deliveryNoteNumber: { type: String },
     invoiceNumber: { type: String },
+    invoiceSymbol: { type: String },
 
     customerCode: { type: String },
     customerName: { type: String },
 
     description: { type: String },
-    totalAmount: { type: Number, required: true },
+    totalAmount: { type: Number },
     discountAmount: { type: Number, default: 0 },
     totalVatAmount: { type: Number, default: 0 },
     totalPayment: { type: Number },
