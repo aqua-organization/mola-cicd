@@ -38,7 +38,7 @@ class EInvoiceService {
     };
   }
 
-  async getEInvoice({ type, process_type, date_range, output_path }) {
+  async getEInvoice({ type, process_type, date_range, output_path, userId }) {
     const response = await httpClient.post(PROCESSES_INVOICES_URL, {
       type,
       process_type,
@@ -52,7 +52,7 @@ class EInvoiceService {
     const invoices = response.json_data;
 
     const invoicesTransformed = invoices.map((invoice) => {
-      return mapEInvoice[type](invoice);
+      return mapEInvoice[type](invoice, userId);
     });
 
     const results = await this.salesInvoiceService.bulkCreateSalesInvoice(
